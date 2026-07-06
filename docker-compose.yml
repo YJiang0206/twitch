@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:latest # windows installation disk
+    environment:
+      MYSQL_ROOT_HOST: '%' # my mySQL can receive any visits from other machines
+      MYSQL_DATABASE: twitch
+      MYSQL_ROOT_PASSWORD: secret
+      TZ: UTC #time zone
+    volumes:
+      - mysql-local:/var/lib/mysql # hard drive
+    ports:
+      - "3306:3306" # inner port map to inner port
+
+
+# permanent storage of data.
+volumes:
+  mysql-local:
